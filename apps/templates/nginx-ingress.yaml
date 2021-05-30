@@ -13,7 +13,7 @@ spec:
   source:
     chart: nginx-ingress
     helm:
-    repoURL: https://prometheus-community.github.io/helm-charts
+    repoURL: https://kubernetes.github.io/ingress-nginx
     targetRevision: HEAD
   syncPolicy:
     automated:
