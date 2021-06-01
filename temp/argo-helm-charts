@@ -1,0 +1,32 @@
+
+details of the names added to argo - work/add to app of apps
+
+
+traefik
+project: default
+source:
+  repoURL: 'https://kubernetes-charts.banzaicloud.com'
+  targetRevision: 1.75.1
+  helm:
+    parameters:
+      - name: imageTag
+        value: '1.7'
+      - name: serviceType
+        value: ClusterIP
+  chart: traefik
+destination:
+  server: 'https://kubernetes.default.svc'
+  namespace: ingress
+
+
+
+nginx
+project: default
+source:
+  repoURL: 'https://kubernetes.github.io/ingress-nginx'
+  targetRevision: 3.31.0
+  chart: ingress-nginx
+destination:
+  server: 'https://kubernetes.default.svc'
+  namespace: default
+
