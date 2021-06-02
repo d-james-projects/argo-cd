@@ -5,6 +5,9 @@ argo-cd:
       tag: v2.0.3
   dex:
     enabled: false
+  controller:
+    args:
+      appResyncPeriod: "300"
   server:
     extraArgs:
       - --insecure
