@@ -2,7 +2,7 @@
 details of the names added to argo - work/add to app of apps
 
 
-traefik
+traefik (v1.17.30)
 project: default
 source:
   repoURL: 'https://kubernetes-charts.banzaicloud.com'
@@ -29,4 +29,20 @@ source:
 destination:
   server: 'https://kubernetes.default.svc'
   namespace: default
+  
+  
+namespaces
+argocd
+
+secrets
+  - secretName: traefik-app-tls-cert
+openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout tls.key -out tls.crt -subj "/CN=example.local"
+kubectl create -n <ns> secret tls traefik-app-tls-cert --key=tls.key --cert=tls.crt
+
+
+argo pwd
+kubectl get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d
+
+nginx/traefik installed from yaml
+
 

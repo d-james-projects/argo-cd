@@ -1,0 +1,31 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: traefik
+    traefik.frontend.rule.type: PathPrefixStrip
+  name: app-ingress-tls
+  namespace: default
+spec:
+  rules:
+  - host: example.local
+    http:
+      paths:
+      - backend:
+          service:
+            name: k8dash
+            port:
+              number: 80
+        path: /k8dash
+        pathType: ImplementationSpecific
+      - backend:
+          service:
+            name: traefik-web-ui
+            port:
+              name: web
+        path: /traefik
+        pathType: ImplementationSpecific
+  tls:
+  - secretName: traefik-app-tls-cert
+status:
+  loadBalancer: {}
