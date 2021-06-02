@@ -7,7 +7,7 @@ argo-cd:
     enabled: false
   server:
     extraArgs:
-      - --enable-ssl-passthrough
+      - --insecure
     config:
       repositories: |
         - type: helm
