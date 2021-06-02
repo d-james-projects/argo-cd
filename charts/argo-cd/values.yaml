@@ -9,8 +9,6 @@ argo-cd:
     args:
       appResyncPeriod: "300"
   server:
-    extraArgs:
-      - --insecure
     config:
       repositories: |
         - type: helm
